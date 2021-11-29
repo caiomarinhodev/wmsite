@@ -1,0 +1,480 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!-- Top bar-->
+    <div class="top-bar py-2" id="topBar" style="background: #555">
+        <div class="container px-lg-0 text-light py-1">
+            <div class="row d-flex align-items-center">
+                <div class="col-md-6 d-md-block d-none">
+                    <p class="mb-0 text-xs">Contate-nos em +83 3066 9422 ou wmrecargadecartuchos@hotmail.com.</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex justify-content-md-end justify-content-between">
+                        <ul class="list-inline d-block d-md-none mb-0">
+                            <li class="list-inline-item"><a class="text-xs" href="tel:+558330669422"><i
+                                    class="fa fa-phone"></i></a>
+                            </li>
+                            <li class="list-inline-item"><a class="text-xs"
+                                                            href="mailto:wmrecargadecartuchos@hotmail.com"><i
+                                    class="fa fa-envelope"></i></a>
+                            </li>
+                        </ul>
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item"><a class="text-xs text-uppercase fw-bold text-reset" href="#"
+                                                            data-bs-toggle="modal" data-bs-target="#login-modal"><i
+                                    class="fas fa-door-open me-2"></i><span
+                                    class="d-none d-md-inline-block">Area do Cliente</span></a></li>
+                            <li class="list-inline-item"><a class="text-xs text-uppercase fw-bold text-reset"
+                                                            href="{% url 'admin:index' %}"><i
+                                    class="fas fa-user me-2"></i><span
+                                    class="d-none d-md-inline-block">Portal</span></a></li>
+                        </ul>
+                        <ul class="list-inline mb-0 ms-lg-4">
+                            <li class="list-inline-item text-gray-600 m-0"><a class="text-xs social-link-hover" href="#"
+                                                                              title="Facebook"><i
+                                    class="fab fa-facebook-f"></i></a></li>
+                            <li class="list-inline-item text-gray-600 m-0"><a class="text-xs social-link-hover" href="#"
+                                                                              title="Twitter"><i
+                                    class="fab fa-twitter"></i></a></li>
+                            <li class="list-inline-item text-gray-600 m-0"><a class="text-xs social-link-hover" href="#"
+                                                                              title="Linkedin"><i
+                                    class="fab fa-linkedin-in"></i></a></li>
+                            <li class="list-inline-item text-gray-600 m-0"><a class="text-xs social-link-hover"
+                                                                              href="mailto:wmrecargadecartuchos@hotmail.com"
+                                                                              title="Email"><i
+                                    class="fas fa-envelope"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Top bar end-->
+    <!-- Login Modal-->
+    <div class="modal fade" id="login-modal" tabindex="-1" aria-labelledby="login-modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title text-uppercase" id="login-modalLabel">Área do Cliente</h4>
+                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="#" method="get">
+                        <div class="form-group mb-3">
+                            <input class="form-control" id="email_modal" type="text" placeholder="email">
+                        </div>
+                        <div class="form-group mb-3">
+                            <input class="form-control" id="password_modal" type="password" placeholder="password">
+                        </div>
+                        <p class="text-center">
+                            <button class="btn btn-outline-primary"><i class="fas fa-door-open"></i> Log in</button>
+                        </p>
+                    </form>
+                    <p class="text-center text-muted small">Não se cadastrou ainda?</p>
+                    <p class="text-center text-muted small"><a href="#"><strong>Cadastre-se Agora</strong></a>! É fácil
+                        e feito em 1 minuto e dá acesso a descontos especiais, serviços rápidos e muito mais!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Login modal end-->
+    <!-- Navbar Sticky-->
+    <header class="nav-holder make-sticky">
+        <div class="navbar navbar-light bg-white navbar-expand-lg py-0" id="navbar">
+            <div class="container py-3 py-lg-0 px-lg-0">
+                <!-- Navbar brand--><a class="navbar-brand" href="#"><img class="d-none d-md-inline-block"
+                                                                          src="{% static "img/logo.png" %}"
+                                                                          alt="WM Locações"><img
+                    class="d-inline-block d-md-none" src="{% static "img/logo.png" %}" alt="WM Locações"><span
+                    class="sr-only">WM Locações</span></a>
+                <!-- Navbar toggler-->
+                <button class="navbar-toggler text-primary border-primary" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navigationCollapse" aria-controls="navigationCollapse" aria-expanded="false"
+                        aria-label="Toggle navigation"><span class="sr-only">Toggle navigation</span><i
+                        class="fas fa-align-justify"></i></button>
+                <!-- Collapsed Navigation    -->
+                <div class="collapse navbar-collapse" id="navigationCollapse">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="topmenu">
+                        <!-- homepage dropdown-->
+                        <li class="nav-item dropdown"><a class="nav-link active"
+                                                         href="#" role="button"
+                                                         aria-expanded="false">Inicio</a>
+                        </li>
+                        <!-- megamenu [portfolio]-->
+                        <li class="nav-item dropdown menu-large"><a class="nav-link"
+                                                                    href="#services" role="button"
+                                                                    aria-expanded="false">Serviços</a>
+                        </li>
+                        <li class="nav-item dropdown menu-large"><a class="nav-link"
+                                                                    href="#team" role="button"
+                                                                    aria-expanded="false">Time</a>
+                        </li>
+                        <!-- megamenu [all pages]-->
+                        <li class="nav-item dropdown menu-large"><a class="nav-link"
+                                                                    href="#store" role="button"
+                                                                    aria-expanded="false">Loja</a>
+                        </li>
+                        <!-- dropdown menu [contact]-->
+                        <li class="nav-item dropdown"><a class="nav-link" href="#contact"
+                                                         role="button" aria-expanded="false">Contato</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- INIT BLOCK SECTION-->
+    <section id="about" class="py-5 bg-primary text-white" style="background-color: #555555 !important;">
+        <div class="container">
+            <div class="row gy-4 align-items-center">
+                <div class="col-md-6">
+                    <h2 class="text-uppercase">Sobre Nós</h2><br/>
+                    <p class="mb-3">
+                        A WM iniciou suas atividades em 2013, trabalhando com <strong>recargas, suprimentos locação de
+                        impressoras e serviços de informática</strong>, integrando soluções como: <strong>Outsourcing de
+                        Impressão,
+                        Automação de Processos, Locação de Máquinas</strong> e muito mais. </p>
+                    <p>A WM dispõe de amplo conhecimento e
+                        experiência, e dessa maneira é especializada em outsourcing de impressão, e assim se destaca no
+                        segmento e atende toda a cidade de Campina Grande e demais regiões na Paraíba.
+                        Há 8 anos estamos trabalhando com Assistência técnica, Reposição de suprimentos, Suporte e
+                        Manutenção dos equipamentos.
+                    </p>
+                </div>
+                <div class="col-md-6"><img class="img-fluid d-block mx-auto"
+                                           src="{% static "img/logo-wm.png" %}"
+                                           alt="..."></div>
+            </div>
+        </div>
+    </section>
+    <!-- SERVICES SECTION-->
+    <section id="services" class="py-5">
+        <div class="container py-4">
+            <header class="mb-5">
+                <h2 class="lined lined-center text-uppercase mb-4">Serviços</h2>
+            </header>
+            <div class="row gy-4">
+                <!-- Service-->
+                <div class="col-lg-4 col-md-6 block-icon-hover text-center">
+                    <div class="icon icon-outlined icon-outlined-primary icon-thin mx-auto mb-3"><i
+                            class="fas fa-desktop"></i></div>
+                    <h4 class="text-uppercase mb-3">
+                        Outsourcing</h4>
+                    <p class="text-gray-600 text-sm">
+                        Desenvolvemos projetos de Outsourcing de Impressão de forma customizada, focando na necessidade
+                        de nossos clientes e ultrapassando suas expectativas. O escopo do projeto inclui: Substituição
+                        do Parque de Impressoras e Copiadoras. Instalação dos equipamentos. Fornecimento de Suprimentos
+                        (mediante contrato). Implantação do Software de gerenciamento e controle Manutenção e suporte
+                        técnico.
+                        Nosso portifólio de serviços também engloba locação de equipamentos (multifuncionais,
+                        impressoras, copiadoras, faxes e scanners).
+                    </p>
+                </div>
+                <!-- Service-->
+                <div class="col-lg-4 col-md-6 block-icon-hover text-center">
+                    <div class="icon icon-outlined icon-outlined-primary icon-thin mx-auto mb-3"><i
+                            class="fas fa-print"></i></div>
+                    <h4 class="text-uppercase mb-3">Aluguel de Impressoras</h4>
+                    <p class="text-gray-600 text-sm">Empresas de diferentes portes realizam a impressão de documentos, e
+                        por isso devem alugar impressora a fim de reduzir seus custos. Portanto, somos uma prestadora de
+                        serviços com ampla experiência no segmento de impressão, que seja
+                        capaz de oferecer equipamentos novos e seminovos com confiabilidade ideal. Nós fornecemos
+                        máquinas que possam suprir plenamente as
+                        necessidades da empresa em diferentes tecnologias, de impressoras
+                        simples a multifuncionais, além de copiadoras, faxes e scanners.
+                    </p>
+                </div>
+                <!-- Service-->
+                <div class="col-lg-4 col-md-6 block-icon-hover text-center">
+                    <div class="icon icon-outlined icon-outlined-primary icon-thin mx-auto mb-3"><i
+                            class="fa fa-laptop"></i></div>
+                    <h4 class="text-uppercase mb-3">Suprimentos de Informática</h4>
+                    <p class="text-gray-600 text-sm">Suprimentos de Informática são nada mais nada menos do que
+                        consumíveis utilizados em nossos equipamentos de informática. Mas o que são consumíveis? São
+                        aqueles produtos que são utilizados por uma ou mais vezes e
+                        posteriormente devem ser substituídos pois já não mais satisfazem sua tarefa principal.
+                        Trabalhamos com os principais suprimentos de informática: cartuchos de tinta, Refis de Tinta,
+                        Garrafas de Tinta,mídias opticas, papel fotografico/glossy e toners.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CUSTOMERS SECTION-->
+    <section class="py-5 bg-gray-200">
+        <div class="container py-4">
+            <!-- Customer slider-->
+            <div class="swiper-container customers-slider">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide h-auto"><img class="img-fluid img-grayscale d-block mx-auto"
+                                                          src="{% static "printers/hp.png" %}" alt="HP" width="140px">
+                    </div>
+                    <div class="swiper-slide h-auto"><img class="img-fluid img-grayscale d-block mx-auto"
+                                                          src="{% static "printers/epson.png" %}" alt="EPSON"
+                                                          width="140px">
+                    </div>
+                    <div class="swiper-slide h-auto"><img class="img-fluid img-grayscale d-block mx-auto"
+                                                          src="{% static "printers/samsung.png" %}" alt="SAMSUNG"
+                                                          width="140px">
+                    </div>
+                    <div class="swiper-slide h-auto"><img class="img-fluid img-grayscale d-block mx-auto"
+                                                          src="{% static "printers/canon.png" %}" alt="CANON"
+                                                          width="140px">
+                    </div>
+                    <div class="swiper-slide h-auto"><img class="img-fluid img-grayscale d-block mx-auto"
+                                                          src="{% static "printers/brother.png" %}" alt="BROTHER"
+                                                          width="140px">
+                    </div>
+                    <div class="swiper-slide h-auto"><img class="img-fluid img-grayscale d-block mx-auto"
+                                                          src="{% static "printers/ricoh.png" %}" alt="RICOH"
+                                                          width="140px">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- WHO ARE WE SECTION-->
+    <section class="py-5" id="team">
+        <div class="container py-4">
+            <header class="mb-5">
+                <h2 class="lined lined-center text-uppercase mb-4">Nosso Time</h2>
+            </header>
+            <div class="row gy-4">
+                <!-- Team member  -->
+                <div class="col-lg-3 col-md-6 text-center"><a href="#"><img
+                        class="avatar avatar-xxl p-2 mb-4" src="{% static "team/manu.jpeg" %}" alt="Manuelina"></a>
+                    <h3 class="h4 mb-1 text-uppercase"><a class="text-reset" href="#">Manuelina</a></h3>
+                    <p class="text-muted small text-uppercase">CEO</p>
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a class="social-link whatsapp" target="_blank" href="https://wa.me/+5583987678188/?text=Oi, Vim pelo site e gostaria de sua ajuda ..."><i
+                                class="fab fa-whatsapp"></i></a></li>
+                        <li class="list-inline-item"><a class="social-link email" href="mailto:wmrecargadecartuchos@hotmail.com"><i
+                                class="fas fa-envelope"></i></a></li>
+                    </ul>
+                </div>
+                <!-- Team member  -->
+                <div class="col-lg-3 col-md-6 text-center"><a href="#"><img
+                        class="avatar avatar-xxl p-2 mb-4" src="{% static "team/well.jpeg" %}" alt="Wellington"></a>
+                    <h3 class="h4 mb-1 text-uppercase"><a class="text-reset" href="#">Wellington</a></h3>
+                    <p class="text-muted small text-uppercase">Gerente de Vendas</p>
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a class="social-link whatsapp" target="_blank" href="https://wa.me/+5583987678188/?text=Oi, Vim pelo site e gostaria de sua ajuda ..."><i
+                                class="fab fa-whatsapp"></i></a></li>
+                        <li class="list-inline-item"><a class="social-link email" href="mailto:wmrecargadecartuchos@hotmail.com"><i
+                                class="fas fa-envelope"></i></a></li>
+                    </ul>
+                </div>
+                <!-- Team member  -->
+                <div class="col-lg-3 col-md-6 text-center"><a href="#"><img
+                        class="avatar avatar-xxl p-2 mb-4" src="{% static "team/valeria.jpeg" %}"
+                        alt="Luke Skywalker"></a>
+                    <h3 class="h4 mb-1 text-uppercase"><a class="text-reset" href="#">Valéria</a>
+                    </h3>
+                    <p class="text-muted small text-uppercase">Recepção</p>
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a class="social-link whatsapp" target="_blank" href="https://wa.me/+5583987678188/?text=Oi, Vim pelo site e gostaria de sua ajuda ..."><i
+                                class="fab fa-whatsapp"></i></a></li>
+                        <li class="list-inline-item"><a class="social-link email" href="mailto:wmrecargadecartuchos@hotmail.com"><i
+                                class="fas fa-envelope"></i></a></li>
+                    </ul>
+                </div>
+                <!-- Team member  -->
+                <div class="col-lg-3 col-md-6 text-center"><a href="#"><img
+                        class="avatar avatar-xxl p-2 mb-4" src="{% static "team/joao.jpeg" %}"
+                        alt="Princess Leia"></a>
+                    <h3 class="h4 mb-1 text-uppercase"><a class="text-reset" href="#">João Batista</a>
+                    </h3>
+                    <p class="text-muted small text-uppercase">Suporte e Manutenção</p>
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a class="social-link whatsapp" target="_blank" href="https://wa.me/+5583987678188/?text=Oi, Vim pelo site e gostaria de sua ajuda ..."><i
+                                class="fab fa-whatsapp"></i></a></li>
+                        <li class="list-inline-item"><a class="social-link email" href="mailto:wmrecargadecartuchos@hotmail.com"><i
+                                class="fas fa-envelope"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CLIENT SECTION-->
+    <section class="py-5 bg-gray-200">
+        <div class="container py-4">
+            <header class="mb-5">
+                <h2 class="text-uppercase lined lined-center mb-4">Nossos Clientes </h2>
+            </header>
+            <!-- Customer slider-->
+            <div class="swiper-container customers-slider">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide h-auto"><img class="img-fluid img-grayscale d-block mx-auto"
+                                                          src="{% static "customers/targino.png" %}" alt="..." width="140">
+                    </div>
+                    <div class="swiper-slide h-auto"><img class="img-fluid img-grayscale d-block mx-auto"
+                                                          src="{% static "customers/incor.png" %}" alt="..." width="140">
+                    </div>
+                    <div class="swiper-slide h-auto"><img class="img-fluid img-grayscale d-block mx-auto"
+                                                          src="{% static "customers/pocinhos.png" %}" alt="..." width="140">
+                    </div>
+                    <div class="swiper-slide h-auto"><img class="img-fluid img-grayscale d-block mx-auto"
+                                                          src="{% static "customers/bella.png" %}" alt="..." width="140">
+                    </div>
+                    <div class="swiper-slide h-auto"><img class="img-fluid img-grayscale d-block mx-auto"
+                                                          src="{% static "customers/cto.png" %}" alt="..." width="140">
+                    </div>
+                    <div class="swiper-slide h-auto"><img class="img-fluid img-grayscale d-block mx-auto"
+                                                          src="{% static "customers/fdiniz.png" %}" alt="..." width="140">
+                    </div>
+                    <div class="swiper-slide h-auto"><img class="img-fluid img-grayscale d-block mx-auto"
+                                                          src="{% static "customers/lux.png" %}" alt="..." width="140">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CONTACT SECTION-->
+    <section class="py-5" id="contact">
+        <div class="container py-4">
+            <h2 class="text-uppercase lined mb-4">Como podemos te ajudar?</h2>
+            <p class="lead mb-5">
+                Se você ficou com alguma dúvida, saiba que nossa empresa ainda conta com apoio fundamental de equipe
+                formada por profissionais qualificados para realizar o atendimento ideal para todas as necessidades que
+                cada cliente apresentar.</p>
+
+            <p class="lead mb-5"> Para saber mais sobre Alugar impressora ou suporte, entre em contato conosco.</p>
+
+            <p class="lead mb-5">
+                Nossa área de clientes são nossa prioridade. Por favor entre em contato em nossa área de clientes.
+                Caso necessário, ligue para 83 3066-9422.
+            </p>
+            <div class="row gy-5 mb-5">
+                <div class="col-lg-4 block-icon-hover text-center">
+                    <div class="icon icon-outlined icon-outlined-primary icon-thin mx-auto mb-3"><i
+                            class="fas fa-map-marker-alt"></i></div>
+                    <h4 class="text-uppercase mb-3">Endereço</h4>
+                    <p class="text-gray-600 text-sm">Rua Rita Pereira de Araújo, 398<br>Bodocongó<br>Campina Grande,
+                        PB<br>58430-480</p>
+                </div>
+                <div class="col-lg-4 block-icon-hover text-center">
+                    <div class="icon icon-outlined icon-outlined-primary icon-thin mx-auto mb-3"><i
+                            class="fas fa-user"></i></div>
+                    <h4 class="text-uppercase mb-3">Recepção</h4>
+                    <p class="text-gray-600 text-sm">Este é o nosso número fixo de nossa recepção.</p>
+                    <p class="text-gray-600 text-sm"><strong>+55 83 3066 9422</strong></p>
+                </div>
+                <div class="col-lg-4 block-icon-hover text-center">
+                    <div class="icon icon-outlined icon-outlined-primary icon-thin mx-auto mb-3"><i
+                            class="fas fa-laptop"></i></div>
+                    <h4 class="text-uppercase mb-3">Suporte</h4>
+                    <p class="text-gray-600 text-sm">Em caso de suporte acesse nossa área de clientes, ou envie um email
+                        para nós.</p>
+                    <ul class="list-unstyled text-sm mb-0">
+                        <li><strong><a
+                                href="mailto:wmrecargadecartuchos@hotmail.com">wmrecargadecartuchos@hotmail.com</a></strong>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- CONTACT FORM    -->
+            <div class="row">
+                <div class="col-lg-7 mx-auto">
+                    <h2 class="lined lined-center text-uppercase mb-4">Formulário de Contato</h2>
+                    <form method="post" action="{% url 'index' %}">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <p>
+                            <button class="btn btn-outline-primary" type="submit"><i
+                                    class="far fa-envelope me-2"></i>Enviar Mensagem
+                            </button>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="border-top border-primary" id="contactMap"></div>
+    <div class="bg-primary py-5 text-white">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-lg-8 p-3">
+                    <h3 class="text-uppercase mb-0">Você deseja ter um atendimento personalizado?</h3>
+                </div>
+                <div class="col-lg-4 p-3"><a class="btn btn-outline-light" href="#" data-bs-toggle="modal"
+                                             data-bs-target="#login-modal">Acesse a Área de Clientes</a></div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="bg-gray-700 text-white py-5">
+            <div class="container py-4">
+                <div class="row gy-4">
+                    <div class="col-md-4 ">
+                        <h4 class="mb-3 text-uppercase">Sobre nós</h4>
+                        <p class="text-sm text-gray-500">A WM dispõe de amplo conhecimento e experiência, e dessa
+                            maneira é especializada em outsourcing de impressão, e assim se destaca no segmento e atende
+                            toda a cidade de Campina Grande e demais regiões na Paraíba.</p>
+                        <hr>
+                    </div>
+                    <div class="col-md-5">
+
+                    </div>
+                    <div class="col-lg-3">
+                        <h4 class="mb-3 text-uppercase">Contato</h4>
+                        <p class="text-uppercase text-sm text-gray-500"><strong>WM - Locações.</strong>
+                            <br>Rua Rita Pereira de Araújo, 398<br>Bodocongó<br>Campina Grande, PB<br>58430-480
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- COPYRIGHTS                -->
+        <div class="bg-dark py-5">
+            <div class="container">
+                <div class="row align-items-cenrer gy-3 text-center">
+                    <div class="col-md-6 text-md-start">
+                        <p class="mb-0 text-sm text-gray-500">&copy; WM Locações, Recargas e Suprimentos de
+                            Informática. </p>
+                    </div>
+                    <div class="col-md-6 text text-md-end">
+                        <p class="mb-0 text-sm text-gray-500">Template designed by <a href="#"
+                                                                                      target="_blank">Caio Marinho</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        var lastId, topMenu = $("#topmenu"),
+            topMenuHeight = topMenu.outerHeight() + 74,
+            // All list items
+            menuItems = topMenu.find("a"),
+            // Anchors corresponding to menu items
+            scrollItems = menuItems.map(function () {
+                var item = $($(this).attr("href"));
+                if (item.length) {
+                    return item;
+                }
+            });
+
+        // Bind to scroll
+        $(window).scroll(function () {
+            // Get container scroll position
+            var fromTop = $(this).scrollTop() + topMenuHeight;
+
+            // Get id of current scroll item
+            var cur = scrollItems.map(function () {
+                if ($(this).offset().top < fromTop)
+                    return this;
+            });
+            // Get the id of the current element
+            cur = cur[cur.length - 1];
+            var id = cur && cur.length ? cur[0].id : "";
+
+            if (lastId !== id) {
+                lastId = id;
+                topMenu.find("a").each(function () {
+                    $(this).removeClass('active');
+                });
+                // Set/remove active class
+                $("[href='#" + id + "']").addClass("active");
+            }
+        });
+
+    </script>
+{% endblock %}
