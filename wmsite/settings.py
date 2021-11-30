@@ -24,7 +24,7 @@ SECRET_KEY = ')+e&(=48brhc0&jzs99g^ea1z9c-2v0e-i2(lzfyqo8_=8f5_c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*',]
+ALLOWED_HOSTS = ['*', ]
 
 # Application definition
 
@@ -100,7 +100,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Fortaleza'
 
 USE_I18N = True
 
@@ -115,14 +115,11 @@ STATIC_URL = '/static/'
 
 import os
 
-INSTALLED_APPS += ['rest_framework', 'rest_framework.authtoken', 'django.contrib.sites', 'allauth', 'allauth.account',
-                   'allauth.socialaccount', 'rest_auth', 'rest_auth.registration', 'corsheaders', 'app']
+INSTALLED_APPS += ['django.contrib.sites', 'allauth', 'allauth.account', 'allauth.socialaccount', 'app']
 
 SITE_ID = 1
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-
-MIDDLEWARE += ['corsheaders.middleware.CorsMiddleware']
 
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 
@@ -134,9 +131,3 @@ db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
 FILE_CHARSET = 'UTF-8'
-
-CORS_ORIGIN_ALLOW_ALL = True
-
-LOGOUT_REDIRECT_URL = '/'
-
-LOGIN_REDIRECT_URL = '/'
