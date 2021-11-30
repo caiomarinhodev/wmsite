@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.urls import reverse
 from django.views.generic import FormView, CreateView
 
 from app.forms import MensagemForm
@@ -7,7 +8,9 @@ from app.forms import MensagemForm
 class IndexView(CreateView):
     form_class = MensagemForm
     template_name = 'index.html'
-    success_url = '/'
+
+    def get_success_url(self):
+        return reverse('index')
 
     def form_valid(self, form):
         messages.success(self.request, 'Mensagem enviada com sucesso')
