@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
+from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
@@ -38,6 +39,8 @@ class Funcionario(models.Model):
         verbose_name_plural = 'Funcionarios'
 
     nome = models.CharField(max_length=255)
+    usuario = models.ForeignKey(
+        User, blank=True, null=True, on_delete=models.CASCADE)
     cargo = models.CharField(max_length=100)
     email = models.EmailField(blank=True, null=True)
     telefone = models.CharField(max_length=20, null=True, blank=True)
@@ -66,3 +69,55 @@ class Marca(models.Model):
 
     def __unicode__(self):
         return self.nome
+
+
+class Cliente(models.Model):
+    class Meta:
+        verbose_name = 'Cliente'
+        verbose_name_plural = 'Clientes'
+
+    usuario = models.ForeignKey(
+        User, blank=True, null=True, on_delete=models.CASCADE)
+    endereco = models.CharField(max_length=255, blank=True, null=True)
+    numero = models.CharField(max_length=255, blank=True, null=True)
+    bairro = models.CharField(max_length=255, blank=True, null=True)
+    cidade = models.CharField(max_length=255, blank=True, null=True)
+    estado = models.CharField(max_length=255, blank=True, null=True)
+    cep = models.CharField(max_length=255, blank=True, null=True)
+    cnpj = models.CharField(max_length=255, blank=True, null=True)
+
+    def get_name(self):
+        return self.usuario.first_name + ' ' + self.usuario.last_name
+
+    def get_address(self):
+        return self.endereco + ', ' + self.numero + ', ' + self.bairro + ', ' + self.cidade + ', ' + self.estado + ', ' + self.cep
+
+    def __str__(self):
+        return self.usuario.username
+
+    def __unicode__(self):
+        return self.usuario.username
+
+
+STATUS_CHOICES = (('Aguardando', 'Aguardando'), ('Em andamento',
+                                                 'Em andamento'), ('Finalizado', 'Finalizado'))
+
+
+class Solicitacao(models.Model):
+    class Meta:
+        verbose_name = 'Solicitacao'
+        verbose_name_plural = 'Solicitacoes'
+
+    cliente = models.ForeignKey(
+        Cliente, on_delete=models.CASCADE, blank=True, null=True)
+    status = models.CharField(
+        max_length=255, blank=True, null=True, choices=STATUS_CHOICES, default='Aguardando')
+    data_cadastro = models.DateTimeField(auto_now_add=True)
+    produto = models.CharField(max_length=255, blank=True, null=True)
+    descricao = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return self.cliente
+
+    def __unicode__(self):
+        return self.cliente

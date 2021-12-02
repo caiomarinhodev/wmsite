@@ -26,3 +26,38 @@ class MensagemForm(BaseForm, ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(MensagemForm, self).__init__(*args, **kwargs)
+
+
+class LoginForm(BaseForm):
+    username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+
+
+class UserForm(BaseForm, ModelForm):
+    class Meta:
+        model = models.User
+        fields = ('id', 'username', 'first_name', 'last_name', 'email', 'password')
+        widgets = generate_bootstrap_widgets_for_all_fields(models.User)
+
+    def __init__(self, *args, **kwargs):
+        super(UserForm, self).__init__(*args, **kwargs)
+
+
+class ClienteForm(BaseForm, ModelForm):
+    class Meta:
+        model = models.Cliente
+        fields = ("id", "usuario", "endereco", "numero", "bairro", "cidade", "estado", "cep", "cnpj")
+        widgets = generate_bootstrap_widgets_for_all_fields(models.Cliente)
+
+    def __init__(self, *args, **kwargs):
+        super(ClienteForm, self).__init__(*args, **kwargs)
+
+
+class SolicitacaoForm(BaseForm, ModelForm):
+    class Meta:
+        model = models.Solicitacao
+        fields = ("id", "cliente", "status", "produto", "descricao")
+        widgets = generate_bootstrap_widgets_for_all_fields(models.Solicitacao)
+
+    def __init__(self, *args, **kwargs):
+        super(SolicitacaoForm, self).__init__(*args, **kwargs)

@@ -27,7 +27,7 @@ class FuncionarioAdmin(admin.ModelAdmin):
         'id',
     )
     inlines = []
-    list_display = ("id", "nome", "cargo", "email", "telefone", "facebook_url", "instagram_url")
+    list_display = ("id", "nome", "usuario", "cargo", "email", "telefone", "facebook_url", "instagram_url")
 
 
 admin.site.register(Funcionario, FuncionarioAdmin)
@@ -43,3 +43,27 @@ class MarcaAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Marca, MarcaAdmin)
+
+
+class ClienteAdmin(admin.ModelAdmin):
+    list_filter = []
+    search_fields = (
+        'id', 'endereco', 'cnpj'
+    )
+    inlines = []
+    list_display = ("id", "usuario", "endereco", "numero", "bairro", "cidade", "estado", "cep", "cnpj")
+
+
+admin.site.register(Cliente, ClienteAdmin)
+
+
+class SolicitacaoAdmin(admin.ModelAdmin):
+    list_filter = []
+    search_fields = (
+        'id', 'status'
+    )
+    inlines = []
+    list_display = ("id", "cliente", "status", "produto", "descricao", "data_cadastro")
+
+
+admin.site.register(Solicitacao, SolicitacaoAdmin)
