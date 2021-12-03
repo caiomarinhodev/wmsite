@@ -71,6 +71,7 @@ class RegisterView(CreateView):
                                         password=data['password'])
         cliente = Cliente()
         cliente.usuario = user
+        cliente.nome_empresa = data['nome_empresa']
         cliente.save()
         messages.success(self.request, 'Usuario criado com sucesso. Realize Login na Plataforma !')
         return HttpResponseRedirect(self.get_success_url())

@@ -78,6 +78,7 @@ class Cliente(models.Model):
 
     usuario = models.ForeignKey(
         User, blank=True, null=True, on_delete=models.CASCADE)
+    nome_empresa = models.CharField(max_length=255, blank=True, null=True)
     endereco = models.CharField(max_length=255, blank=True, null=True)
     numero = models.CharField(max_length=255, blank=True, null=True)
     bairro = models.CharField(max_length=255, blank=True, null=True)
@@ -87,16 +88,16 @@ class Cliente(models.Model):
     cnpj = models.CharField(max_length=255, blank=True, null=True)
 
     def get_name(self):
-        return self.usuario.first_name + ' ' + self.usuario.last_name
+        return self.nome_empresa
 
     def get_address(self):
         return self.endereco + ', ' + self.numero + ', ' + self.bairro + ', ' + self.cidade + ', ' + self.estado + ', ' + self.cep
 
     def __str__(self):
-        return self.usuario.username
+        return "%s" % self.nome_empresa
 
     def __unicode__(self):
-        return self.usuario.username
+        return "%s" % self.nome_empresa
 
 
 STATUS_CHOICES = (('Aguardando', 'Aguardando'), ('Em andamento',
@@ -117,7 +118,7 @@ class Solicitacao(models.Model):
     descricao = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return self.cliente.usuario.username
+        return self.cliente.nome_empresa
 
     def __unicode__(self):
-        return self.cliente.usuario.username
+        return self.cliente.nome_empresa

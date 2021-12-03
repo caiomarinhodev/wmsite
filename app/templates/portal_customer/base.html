@@ -101,12 +101,12 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="topmenu">
                         <!-- homepage dropdown-->
                         <li class="nav-item dropdown"><a class="nav-link active"
-                                                         href="#" role="button"
+                                                         href="{% url 'portal' %}" role="button"
                                                          aria-expanded="false">Inicio</a>
                         </li>
                         <!-- megamenu [portfolio]-->
                         <li class="nav-item dropdown menu-large"><a class="nav-link"
-                                                                    href="#dados" role="button"
+                                                                    href="{% url 'profile' %}" role="button"
                                                                     aria-expanded="false">Meus Dados</a>
                         </li>
                         <!-- megamenu [all pages]-->
@@ -253,7 +253,7 @@
     }
 
     $(document).ready(function () {
-        $('[name=cep],[name=zipcode]').focusout(function () {
+        $('[name=cep]').focusout(function () {
             $('#loading').show();
             var cep = $('[name=cep],[name=zipcode]');
             var cepCode = cep.val();
@@ -276,7 +276,6 @@
                         }
                         $('[name=address]').val(address);
                         $('[name=district]').val(result.district);
-                        $('[name=state]').val(result.state);
                         $('[name=city]').val(result.city);
                     }
                 }

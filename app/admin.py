@@ -51,7 +51,7 @@ class ClienteAdmin(admin.ModelAdmin):
         'id', 'endereco', 'cnpj'
     )
     inlines = []
-    list_display = ("id", "usuario", "endereco", "numero", "bairro", "cidade", "estado", "cep", "cnpj")
+    list_display = ("id", "usuario", "nome_empresa", "endereco", "numero", "bairro", "cidade", "estado", "cep", "cnpj")
 
 
 admin.site.register(Cliente, ClienteAdmin)

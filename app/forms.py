@@ -46,7 +46,7 @@ class UserForm(BaseForm, ModelForm):
 class ClienteForm(BaseForm, ModelForm):
     class Meta:
         model = models.Cliente
-        fields = ("id", "usuario", "endereco", "numero", "bairro", "cidade", "estado", "cep", "cnpj")
+        fields = ("id", "usuario", "nome_empresa", "endereco", "numero", "bairro", "cidade", "estado", "cep", "cnpj")
         widgets = generate_bootstrap_widgets_for_all_fields(models.Cliente)
 
     def __init__(self, *args, **kwargs):

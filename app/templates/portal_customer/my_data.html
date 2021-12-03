@@ -1,0 +1,103 @@
+{% extends 'portal_customer/base.html' %}
+{% load static %}
+{% block content %}
+    <!-- HEADING BREADCRUMB-->
+    <section class="bg-pentagon py-4">
+        <div class="container py-3">
+            <div class="row d-flex align-items-center gy-4">
+                <div class="col-md-7">
+                    <h1 class="h2 mb-0 text-uppercase">Meus Dados</h1>
+                </div>
+                <div class="col-md-5">
+                    <!-- Breadcrumb-->
+                    <ol class="text-sm justify-content-start justify-content-lg-end mb-0 breadcrumb undefined">
+                        <li class="breadcrumb-item"><a class="text-uppercase" href="{% url 'portal' %}">Início</a></li>
+                        <li class="breadcrumb-item text-uppercase active">Meus Dados</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CREDENTIALS SECTION-->
+    <section class="py-5">
+        <div class="container py-4">
+            <div class="row g-5">
+                <!-- REGISTER BLOCK-->
+                <div class="col-lg-2">
+
+                </div>
+                <div class="col-lg-8">
+                    <header class="mb-5">
+                        <h2 class="text-uppercase mb-4">Meus Dados</h2>
+                        <p class="lead">Mantenha atualizado seus dados abaixo. </p>
+                    </header>
+                    <hr class="border-gray-200">
+                    <!-- REGISTER FORM-->
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="form-group mb-3">
+                            <label class="form-label" for="name">Nome:</label>
+                            {{ form.first_name }}
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="form-label" for="username">Sobrenome:</label>
+                            {{ form.last_name }}
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="form-label" for="username">Login: (apenas texto, sem espaços)</label>
+                            {{ form.username }}
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="form-label" for="username">Email:</label>
+                            {{ form.email }}
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="form-label" for="username">Nome da Empresa:</label>
+                            <input type="text" name="nome_empresa" id="nome_empresa" class="form-control"
+                            value="{{ nome_empresa }}">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="form-label" for="username">CEP: </label>
+                            <input type="text" name="cep" id="cep" class="form-control"
+                            value="{{ cep }}">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="form-label" for="username">Endereço: </label>
+                            <input type="text" name="address" id="address" class="form-control"
+                            value="{{ address }}">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="form-label" for="username">Número: </label>
+                            <input type="text" name="number" id="number" class="form-control"
+                            value="{{ number }}">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="form-label" for="username">Bairro: </label>
+                            <input type="text" name="district" id="district" class="form-control"
+                            value="{{ district }}">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="form-label" for="username">Cidade: </label>
+                            <input type="text" name="city" id="city" class="form-control"
+                            value="{{ city }}">
+                        </div>
+                        {{ form.password }}
+                        <div class="form-group mb-3 text-center">
+                            <button class="btn btn-outline-primary pull-right" type="submit"><i
+                                    class="fa fa-paper-plane me-2"></i>Enviar
+                            </button>
+                            <a href="{% url 'portal' %}" class="btn btn-secondary pull-left">Voltar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        $(document).ready(function () {
+            $('[name=password]').hide();
+        });
+    </script>
+
+{% endblock %}
