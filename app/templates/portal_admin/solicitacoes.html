@@ -1,0 +1,134 @@
+{% extends 'portal_admin/base.html' %}
+{% load static %}
+{% block content %}
+    <!-- HEADING BREADCRUMB-->
+    <section class="bg-pentagon py-4">
+        <div class="container py-3">
+            <div class="row d-flex align-items-center gy-4">
+                <div class="col-md-7">
+                    <h1 class="h2 mb-0 text-uppercase">Portal</h1>
+                </div>
+                <div class="col-md-5">
+                    <!-- Breadcrumb-->
+                    <ol class="text-sm justify-content-start justify-content-lg-end mb-0 breadcrumb undefined">
+                        <li class="breadcrumb-item"><a class="text-uppercase" href="{% url 'portal_admin' %}">Início</a>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- CREDENTIALS SECTION-->
+    <section class="py-5">
+        <div class="container py-4">
+            <div class="row g-5">
+                <!-- REGISTER BLOCK-->
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-sm-10"><h2 class="text-uppercase mb-4">Solicitações</h2></div>
+                        <div class="col-sm-2 pull-right">
+                            <a href="{% url 'create_solicitacao_admin' %}" class="btn btn-primary">
+                                <i class="fa fa-plus-circle"></i>
+                                Criar Solicitação</a>
+                        </div>
+                    </div>
+                    <hr class="border-gray-200">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <table id="table" class="table table-striped" cellspacing="0" cellpadding="0">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>CLIENTE</th>
+                                    <th>DATA</th>
+                                    <th>PRODUTO</th>
+                                    <th>STATUS</th>
+                                    <th>Ações</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="notify"></div>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#table').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "ajax": "{% url 'solicitacoes_admin_list_json' %}",
+                order: [[0, "desc"]],
+                columnDefs: [
+                    {
+                        targets: 4,
+                        data: 'status',
+                        "render": function (data, type, row, meta) {
+                            if (row[4] === 'Aguardando') {
+                                return '<label class="label info">' + row[4] + '</label">';
+                            } else if (row[4] === 'Em andamento') {
+                                return '<label class="label warning">' + row[4] + '</label">';
+                            } else {
+                                return '<label class="label success">' + row[4] + '</label">';
+                            }
+
+                        }
+                    },
+                    {
+                        targets: -1,
+                        data: 'id',
+                        "render": function (data, type, row, meta) {
+                            return '<a href="/portal/admin/' + row[0] + '/"><i\n' +
+                                '                                    class="fa fa-eye"></i></a>&nbsp;&nbsp;' +
+                                '<a href="/portal/admin/' + row[0] + '/delete/"> <i\n' +
+                                '                                    class="fa fa-close"></i></a>';
+                        }
+                    }
+                ],
+                "language": {
+                    "lengthMenu": "Exibir _MENU_ registros por página",
+                    "zeroRecords": "Nenhum item encontrado",
+                    "info": "Mostrando página _PAGE_ de _PAGES_",
+                    "infoEmpty": "Nenhum registro disponível",
+                    "emptyTable": "Sem dados disponíveis na tabela",
+                    "infoFiltered": "(filtrado do total de _MAX_ registros)",
+                    "thousands": ".",
+                    "loadingRecords": "Carregando...",
+                    "processing": "Processando...",
+                    "search": "Buscar:",
+                    "paginate": {
+                        "first": "Primeiro",
+                        "last": "Último",
+                        "next": "Próximo",
+                        "previous": "Anterior"
+                    },
+                    "aria": {
+                        "sortAscending": ": ativar para classificar a coluna ascendente",
+                        "sortDescending": ": ativar para classificar a coluna descendente"
+                    }
+                }
+            });
+
+        });
+        window.setInterval(function () {
+            $.ajax({
+                url: "{% url 'notify_solicitacao' %}",
+                type: "GET",
+                success: function (data) {
+                    $('#notify').html(data);
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+        }, 3000);
+    </script>
+
+{% endblock %}

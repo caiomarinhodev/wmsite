@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static 'default/css/sweetalert.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'default/css/datatables.min.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/af-2.3.7/b-2.0.1/cr-1.5.5/date-1.1.1/r-2.2.9/datatables.min.css"/>
+
     <title>WM - Locações, Recarga, Suprimentos e Informática</title>
     <meta name="description"
           content="Há 8 anos estamos trabalhando com Assistência técnica, Reposição de suprimentos, Suporte e Manutenção dos equipamentos.">
@@ -54,8 +55,8 @@
                             </li>
                         </ul>
                         <ul class="list-inline mb-0">
-                            <li class="list-inline-item"><a class="text-xs text-uppercase fw-bold text-reset" href="#"
-                                                            data-bs-toggle="modal" data-bs-target="#login-modal"><i
+                            <li class="list-inline-item"><a class="text-xs text-uppercase fw-bold text-reset" href="{% url 'portal_admin' %}"
+                                                            ><i
                                     class="fas fa-user me-2"></i><span
                                     class="d-none d-md-inline-block">{{ user.username }}</span></a></li>
                         </ul>
@@ -84,7 +85,7 @@
     <header class="nav-holder make-sticky">
         <div class="navbar navbar-light bg-white navbar-expand-lg py-0" id="navbar">
             <div class="container py-3 py-lg-0 px-lg-0">
-                <!-- Navbar brand--><a class="navbar-brand" href="{% url 'index' %}"><img
+                <!-- Navbar brand--><a class="navbar-brand" href="{% url 'portal_admin' %}"><img
                     class="d-none d-md-inline-block"
                     src="{% static "img/logo.png" %}"
                     alt="WM Locações"><img
@@ -100,13 +101,13 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0" id="topmenu">
                         <!-- homepage dropdown-->
                         <li class="nav-item dropdown"><a class="nav-link active"
-                                                         href="#" role="button"
+                                                         href="{% url 'portal_admin' %}" role="button"
                                                          aria-expanded="false">Inicio</a>
                         </li>
                         <!-- megamenu [portfolio]-->
                         <li class="nav-item dropdown menu-large"><a class="nav-link"
-                                                                    href="#dados" role="button"
-                                                                    aria-expanded="false">Meus Dados</a>
+                                                                    href="{% url 'admin:index' %}" role="button"
+                                                                    aria-expanded="false">Portal</a>
                         </li>
                         <!-- megamenu [all pages]-->
                         <li class="nav-item dropdown menu-large"><a class="nav-link"
@@ -138,8 +139,21 @@
         </div>
     </footer>
 </div>
+
+<audio id="alert" src="{% static 'alert.wav' %}" controls="false" preload="auto" autobuffer
+           style="display: none;"></audio>
+
+<script>
+    function play(soundobj) {
+        var thissound = document.getElementById(soundobj);
+        thissound.play();
+    }
+</script>
 <!-- JavaScript files-->
 <script src="{% static "vendor/bootstrap/js/bootstrap.bundle.min.js" %}"></script>
+
+<script type="text/javascript" src="//cdn.datatables.net/v/dt/jq-3.6.0/dt-1.11.3/af-2.3.7/b-2.0.1/cr-1.5.5/date-1.1.1/r-2.2.9/datatables.min.js"></script>
+
 <script src="{% static "vendor/waypoints/lib/noframework.waypoints.js" %}"></script>
 <script src="{% static "vendor/swiper/swiper-bundle.min.js" %}"></script>
 <script src="{% static "vendor/choices.js/public/assets/scripts/choices.js" %}"></script>

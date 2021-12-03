@@ -117,7 +117,7 @@ class Solicitacao(models.Model):
     descricao = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return self.cliente
+        return self.cliente.usuario.username
 
     def __unicode__(self):
-        return self.cliente
+        return self.cliente.usuario.username

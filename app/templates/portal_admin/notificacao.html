@@ -1,0 +1,14 @@
+<script>
+    $(document).ready(function () {
+        play('alert');
+        swal({
+            title: "ALERTA!",
+            text: 'Você possui uma solicitação',
+            type: 'warning',
+            closeOnConfirm: false,
+            showLoaderOnConfirm: true
+        }, function () {
+            window.location.href = '{% url 'update_solicitacao_admin' solicitacao.pk %}'
+        });
+    });
+</script>
