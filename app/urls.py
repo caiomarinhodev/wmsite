@@ -1,6 +1,6 @@
 from django.urls import path
 
-from app.views.index import IndexView, RegisterView, LoginView, LogoutView
+from app.views.index import IndexView, RegisterView, LoginView, LogoutView, PolicyView
 from app.views.portal_admin import PortalAdminView, SolicitacoesAdminListJson, CreateAdminSolicitacao, \
     UpdateSolicitacao, DeleteSolicitacao, notificar_novo_solicitacao
 from app.views.portal_customer import SolicitacoesListJson, PortalCustomerView, CreateSolicitacao, ProfileUpdateView
@@ -9,6 +9,7 @@ urlpatterns = []
 
 urlpatterns += [
     path('', IndexView.as_view(), name='index'),
+    path('policy', PolicyView.as_view(), name='policy'),
     path('login', LoginView.as_view(), name='login'),
     path('registro', RegisterView.as_view(), name='register'),
     path('portal', PortalCustomerView.as_view(), name='portal'),

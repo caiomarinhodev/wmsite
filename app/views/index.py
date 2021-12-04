@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, logout, login
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from django.views.generic import CreateView, FormView, RedirectView
+from django.views.generic import CreateView, FormView, RedirectView, TemplateView
 
 from app.forms import MensagemForm, UserForm, LoginForm
 from app.models import Cliente
@@ -88,3 +88,7 @@ class LogoutView(RedirectView):
     def get(self, request, *args, **kwargs):
         logout(request)
         return super(LogoutView, self).get(request, *args, **kwargs)
+
+
+class PolicyView(TemplateView):
+    template_name = 'policy.html'
