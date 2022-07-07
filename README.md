@@ -76,10 +76,9 @@ Made with ❤️ by Caio Marinho 👋🏽 Get in touch!
 
 ### Application Demo
 ---
-
 <p align="center">
   <kbd>
-    <img style="border-radius: 5px" src="https://im5.ezgif.com/tmp/ezgif-5-4e2b6e7437.gif" alt="Intro">
+    <img style="border-radius: 5px" src="https://i.imgur.com/5eMT6nZ.gif" alt="Intro">
   </kbd>
 </p>
 
